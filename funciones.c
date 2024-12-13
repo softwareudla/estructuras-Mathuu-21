@@ -9,7 +9,8 @@ int menu() {
     printf("3. Buscar libro por ID\n");
     printf("4. Buscar libro por Titulo\n");
     printf("5. Eliminar libro\n");
-    printf("6. Salir\n");
+    printf("6. Actualizar estado de libro\n");
+    printf("7. Salir\n");
     printf("Ingrese su opcion: ");
     scanf("%d", &opcion);
     return opcion;
