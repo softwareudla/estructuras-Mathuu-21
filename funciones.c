@@ -18,15 +18,15 @@ int menu() {
 
 void registrarLibros(struct Libro libros[], int i) {
     if (i >= 20) {
-        printf("\nNo se pueden registrar mas libros. Limite alcanzado.\n");
+        printf("\nNo se pueden registrar más libros. Límite alcanzado.\n");
         return;
     }
 
-    printf("\nIngrese el ID del libro (unico): ");
+    printf("\nIngrese el ID del libro (único): ");
     int id;
     scanf("%d", &id);
 
-    
+    // Verificar unicidad del ID
     for (int j = 0; j < i; j++) {
         if (libros[j].id == id) {
             printf("\nError: ID ya existente. Intente nuevamente.\n");
@@ -34,25 +34,35 @@ void registrarLibros(struct Libro libros[], int i) {
         }
     }
 
-    libros[i].id = id;
+    // Pedir título del libro
+    printf("Ingrese el título: ");
+    getchar(); // Consumir el salto de línea
+    char titulo[100];
+    fgets(titulo, 100, stdin);
+    titulo[strcspn(titulo, "\n")] = '\0';
 
-    printf("Ingrese el titulo: ");
-    getchar(); // Consumir el salto de linea
-    fgets(libros[i].titulo, 100, stdin);
-    libros[i].titulo[strcspn(libros[i].titulo, "\n")] = '\0';
+    // Verificar unicidad del título
+    for (int j = 0; j < i; j++) {
+        if (strcmp(libros[j].titulo, titulo) == 0) {
+            printf("\nError: Título ya existente. Intente nuevamente.\n");
+            return;
+        }
+    }
+
+    libros[i].id = id;
+    strcpy(libros[i].titulo, titulo);
 
     printf("Ingrese el autor: ");
     fgets(libros[i].autor, 50, stdin);
     libros[i].autor[strcspn(libros[i].autor, "\n")] = '\0';
 
-    printf("Ingrese el anio de publicacion: ");
+    printf("Ingrese el año de publicación: ");
     scanf("%d", &libros[i].anio);
 
     strcpy(libros[i].estado, "Disponible");
 
     printf("\nLibro registrado exitosamente!\n");
 }
-
 void mostrarLibros(struct Libro libros[]) {
     printf("\n%-5s %-30s %-20s %-10s %-12s\n", "ID", "Titulo", "Autor", "Anio", "Estado");
     printf("----------------------------------------------------------------------------\n");
