@@ -25,7 +25,9 @@ void registrarLibros(struct Libro libros[], int i) {
     printf("\nIngrese el ID del libro (unico): ");
     int id;
     scanf("%d", &id);
-
+    if (id < 0) {
+        printf("\nError: ID no puede ser negativo. Intente nuevamente.\n"); 
+    }
     for (int j = 0; j < i; j++) {
         if (libros[j].id == id) {
             printf("\nError: ID ya existente. Intente nuevamente.\n");
@@ -55,6 +57,11 @@ void registrarLibros(struct Libro libros[], int i) {
 
     printf("Ingrese el anio de publicacion: ");
     scanf("%d", &libros[i].anio);
+    if (libros[i].anio < 0)
+    {
+        printf("\nError: Anio no puede ser negativo. Intente nuevamente.\n");
+    }
+    
 
     strcpy(libros[i].estado, "Disponible");
 
