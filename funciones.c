@@ -53,7 +53,7 @@ void registrarLibros(struct Libro libros[], int i) {
     fgets(libros[i].autor, 50, stdin);
     libros[i].autor[strcspn(libros[i].autor, "\n")] = '\0';
 
-    printf("Ingrese el año de publicacion: ");
+    printf("Ingrese el anio de publicacion: ");
     scanf("%d", &libros[i].anio);
 
     strcpy(libros[i].estado, "Disponible");
