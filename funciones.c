@@ -85,6 +85,20 @@ void buscarLibroTitulo(struct Libro libros[], char titulo[]) {
     printf("\nLibro con titulo '%s' no encontrado.\n", titulo);
 }
 
+void actualizarEstado(struct Libro libros[], int id) {
+    for (int j = 0; j < 20; j++) {
+        if (libros[j].id == id) {
+            if (strcmp(libros[j].estado, "Disponible") == 0) {
+                strcpy(libros[j].estado, "Prestado");
+            } else {
+                strcpy(libros[j].estado, "Disponible");
+            }
+            printf("\nEstado del libro con ID %d actualizado a %s.\n", id, libros[j].estado);
+            return;
+        }
+    }
+    printf("\nLibro con ID %d no encontrado.\n", id);
+}
 void eliminarLibro(struct Libro libros[], int id) {
     for (int j = 0; j < 20; j++) {
         if (libros[j].id == id) {

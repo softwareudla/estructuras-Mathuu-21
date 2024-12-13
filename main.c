@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "funciones.h"
+#include <string.h>
 
 int main() {
     struct Libro libros[20] = {0};
@@ -40,13 +41,19 @@ int main() {
                 break;
             }
             case 6:
+                printf("Ingrese el ID del libro que desea actualizar: ");
+                int id;
+                scanf("%d", &id);
+                actualizarEstado(libros, id); 
+                break;
+            case 7:
                 printf("Saliendo del programa.\n");
                 break;
             default:
                 printf("Opcion no valida. Intente nuevamente.\n");
                 break;
         }
-    } while (opc != 6);
+    } while (opc != 7);
 
     return 0;
 }
