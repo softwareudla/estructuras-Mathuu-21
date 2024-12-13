@@ -26,7 +26,6 @@ void registrarLibros(struct Libro libros[], int i) {
     int id;
     scanf("%d", &id);
 
-    // Verificar unicidad del ID
     for (int j = 0; j < i; j++) {
         if (libros[j].id == id) {
             printf("\nError: ID ya existente. Intente nuevamente.\n");
@@ -34,14 +33,12 @@ void registrarLibros(struct Libro libros[], int i) {
         }
     }
 
-    // Pedir título del libro
     printf("Ingrese el título: ");
-    getchar(); // Consumir el salto de línea
+    getchar(); 
     char titulo[100];
     fgets(titulo, 100, stdin);
     titulo[strcspn(titulo, "\n")] = '\0';
 
-    // Verificar unicidad del título
     for (int j = 0; j < i; j++) {
         if (strcmp(libros[j].titulo, titulo) == 0) {
             printf("\nError: Título ya existente. Intente nuevamente.\n");
@@ -113,7 +110,7 @@ void actualizarEstado(struct Libro libros[], int id) {
 void eliminarLibro(struct Libro libros[], int id) {
     for (int j = 0; j < 20; j++) {
         if (libros[j].id == id) {
-            libros[j].id = 0; // Marcar como eliminado
+            libros[j].id = 0;
             printf("\nLibro con ID %d eliminado exitosamente.\n", id);
             return;
         }
